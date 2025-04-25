@@ -5,6 +5,7 @@ import Image5 from './Image6.jpeg'
 import Image2 from './Image2.jpeg'
 import Image3 from './Image3.jpeg'
 import Image4 from './Image4.jpeg'
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
@@ -54,8 +55,9 @@ const Navbar = () => {
       <img src={Image4} alt="I4" className="image-item"/>
       
     </div>
-    <div className="login-text">
-          Login
+    <div className="login-container">
+    <Link to="/login" className="login-text">Login</Link> 
+          
         </div>
     </>
   );
