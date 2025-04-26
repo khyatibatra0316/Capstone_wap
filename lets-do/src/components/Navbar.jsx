@@ -48,6 +48,7 @@ const Navbar = () => {
         </ul>
       </div>
     </nav>
+    <div className="tracker">Your ultimate task tracker</div>
     <div className="images-container">
       <img src={Image5} alt="I1" className="image-item"/>
       <img src={Image2} alt="I2" className="image-item"/>
