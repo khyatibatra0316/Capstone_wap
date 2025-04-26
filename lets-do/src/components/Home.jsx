@@ -1,12 +1,6 @@
 function Home() {
     return (
-      <div style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100vh',
-        backgroundColor: '#ffffff'
-      }}>
+      <div style={{color:'black'}}>
         <h1>Welcome to the Home Page!</h1>
       </div>
     );
