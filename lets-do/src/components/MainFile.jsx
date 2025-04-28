@@ -7,8 +7,17 @@ export default function Main() {
             <div style={{ position: 'relative', width: '100%' }}>
                 <img src={Image11} style={{ width: '100%',height: '29vh', objectFit: 'cover',display: 'block',marginBottom:'70vh'}} alt="Banner" />
                 <img src={Image10} style={{position: 'absolute',top: '23vh', left: '20px', height: '13vh',width: '14vh',}} alt="Teddy"/>
+                
             </div>
+            <div style={{ 
+                display: 'flex', 
+                justifyContent: 'center', 
+                alignItems: 'center', 
+                marginTop: '20px'
+            }}>
+                <h3 style={{ color: 'white', fontSize: '24px' }}>To-do</h3>
             
+            </div>
         </>
     );
 }
