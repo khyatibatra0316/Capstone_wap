@@ -29,7 +29,7 @@ export default function Main() {
         name: '',
         urgent: false,
         important: false,
-        
+        date: ''
     });
 
     const handleAddTask = () => {
@@ -121,7 +121,11 @@ export default function Main() {
                         onChange={e => setNewTask({ ...newTask, important: e.target.checked })}
                     /> Important
                 </label>
-                
+                <input
+                    type="date"
+                    value={newTask.date}
+                    onChange={e => setNewTask({ ...newTask, date: e.target.value })}
+                />
                 <button onClick={handleAddTask}>Add Task</button>
             </div>
 
@@ -145,16 +149,8 @@ export default function Main() {
                 {/* <div className='google-calendar'>
                 <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Asia%2FKolkata&showPrint=0&src=a2h5YXRpLmJhdHJhMjAyNEBuc3QucmlzaGlob29kLmVkdS5pbg&src=ZW4taW4uaW5kaWFuI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&src=ZW4uaW5kaWFuI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%23039BE5&color=%230B8043&color=%230B8043" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
                 </div> */}
-                <div style={{ display: 'flex', justifyContent: 'center', marginTop: '30px' }}>
-  <iframe
-    src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Asia%2FKolkata&showPrint=0&src=a2h5YXRpLmJhdHJhMjAyNEBuc3QucmlzaGlob29kLmVkdS5pbg&src=ZW4taW4uaW5kaWFuI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&src=ZW4uaW5kaWFuI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%23039BE5&color=%230B8043&color=%230B8043"
-    style={{ border: 'solid 1px #777' }}
-    width="800"
-    height="600"
-   
-    title="Google Calendar"
-  />
-</div>
+                
+
 
             </div>
         </>

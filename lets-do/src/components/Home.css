@@ -1,7 +1,7 @@
 .home-container {
     min-height: 100vh;
     width: 100vw;
-    background-image: url('./Image8.jpeg');
+    background: linear-gradient(to bottom right, git#ccf5f8, #f3d9b4);
     display: flex;
     justify-content: center;
     align-items: center;
