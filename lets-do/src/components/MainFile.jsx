@@ -151,8 +151,7 @@ export default function Main() {
     style={{ border: 'solid 1px #777' }}
     width="800"
     height="600"
-    frameBorder="0"
-    scrolling="no"
+   
     title="Google Calendar"
   />
 </div>
