@@ -363,10 +363,15 @@ export default function Main() {
                     <div>
                         <h4>Delegate (Urgent + Not Important)</h4>
                         {renderTasks('delegate')}
-                    </div>
-                    <div>
+                    </div> 
+                     <div>
                         <h4>Delete (Not Urgent + Not Important)</h4>
                         {renderTasks('delete')}
+                    </div>
+                    <div>
+                        <h1>
+                            HELLLLLLL
+                        </h1>
                     </div>
                 </div>
             )}
