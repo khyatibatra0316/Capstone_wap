@@ -184,7 +184,7 @@
 
 
 
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import Image11 from './Imagei11.png';
 import Image10 from './Image10.webp';
 
@@ -197,10 +197,13 @@ export default function Main() {
         important: false,
         date: ''
     });
-    const date = new Date();
-    const showTime = date.getHours() 
-        + ':' + date.getMinutes() 
-        + ":" + date.getSeconds();
+    const [currentTime,setCurrentTime]=useState(new Date())
+   useEffect(()=>{
+    const intervalId=setInterval(()=>{
+        setCurrentTime(new Date())
+    },1000)
+    return()=>clearInterval(intervalId)
+   },[]);
 
     const handleAddTask = () => {
         if (!newTask.name.trim() || !newTask.date) return;
@@ -223,7 +226,7 @@ export default function Main() {
             name: '',
             urgent: false,
             important: false,
-            date: selectedDate // preserve selected date
+            date: selectedDate 
         });
     };
 
@@ -372,11 +375,11 @@ export default function Main() {
                         <h4>Delete (Not Urgent + Not Important)</h4>
                         {renderTasks('delete')}
                     </div>
-                   
-                    <div className="App" >
-            
-            <h2 align="center"> {showTime}</h2>
-        </div>
+                    <div>
+      <p>Current Time: {currentTime.toLocaleTimeString()}</p>
+    </div>
+
+
                 </div>
             )}
         </>
