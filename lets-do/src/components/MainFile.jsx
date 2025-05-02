@@ -197,6 +197,10 @@ export default function Main() {
         important: false,
         date: ''
     });
+    const date = new Date();
+    const showTime = date.getHours() 
+        + ':' + date.getMinutes() 
+        + ":" + date.getSeconds();
 
     const handleAddTask = () => {
         if (!newTask.name.trim() || !newTask.date) return;
@@ -368,11 +372,11 @@ export default function Main() {
                         <h4>Delete (Not Urgent + Not Important)</h4>
                         {renderTasks('delete')}
                     </div>
-                    <div>
-                        <h1>
-                            HELLLLLLL
-                        </h1>
-                    </div>
+                   
+                    <div className="App" >
+            
+            <h2 align="center"> {showTime}</h2>
+        </div>
                 </div>
             )}
         </>
