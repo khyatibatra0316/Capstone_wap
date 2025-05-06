@@ -17,17 +17,8 @@ export default function Main() {
         date: ''
     });
     const [currentTime,setCurrentTime]=useState(new Date());
-    const[minutes,setMinutes]=useState(25);
-    const[seconds,setSeconds]=useState(0);
-    const[isActive,setIsActive]=useState(false);
-    useEffect(()=>{
-        let interval=null;
-        if(isActive){
-            interval=setInterval(()=>{
-                
-            })
-        }
-    })
+                   
+            
    useEffect(()=>{
     const intervalId=setInterval(()=>{
         setCurrentTime(new Date())
@@ -229,30 +220,30 @@ export default function Main() {
 
                     </div>
                     <div style={{
-    display: 'flex',
-    justifyContent: 'center',
-    marginTop: '40px',
-    padding: '20px'
-}}>
-      <p style={{
-        backgroundColor: '#5c4033', 
-        color: '#f8e3c8',          
-        padding: '20px 40px',
-        borderRadius: '16px',
-        boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4)',
-        fontSize: '32px',
-        fontWeight: '600',
-        textAlign: 'center',
-        border: '2px solid rgba(255, 255, 255, 0.2)',
-        minWidth: '240px',
-        letterSpacing: '2px',
-        fontFamily: 'monospace',
-        transition: 'transform 0.2s ease-in-out',
-        transform: 'scale(1.02)',
-        marginBottom:'10vh'
-    }}>Current Time: {currentTime.toLocaleTimeString()}</p>
-    </div>
-
+                        display: 'flex',
+                        justifyContent: 'center',
+                        marginTop: '40px',
+                        padding: '20px'
+                    }}>
+                <p style={{
+                    backgroundColor: '#5c4033', 
+                    color: '#f8e3c8',          
+                    padding: '20px 40px',
+                    borderRadius: '16px',
+                    boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4)',
+                    fontSize: '32px',
+                    fontWeight: '600',
+                    textAlign: 'center',
+                    border: '2px solid rgba(255, 255, 255, 0.2)',
+                    minWidth: '240px',
+                    letterSpacing: '2px',
+                    fontFamily: 'monospace',
+                    transition: 'transform 0.2s ease-in-out',
+                    transform: 'scale(1.02)',
+                    marginBottom:'10vh'
+                }}>Current Time: {currentTime.toLocaleTimeString()}</p>
+                </div>
+              
 
                 </div>
             )}
