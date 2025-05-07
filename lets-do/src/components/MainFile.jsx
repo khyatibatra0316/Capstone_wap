@@ -6,8 +6,15 @@
 import React, { useState,useEffect } from 'react';
 import Image11 from './Imagei11.png';
 import Image10 from './Image10.webp';
+import { useNavigate } from 'react-router-dom';
 
 export default function Main() {
+    const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    navigate('/enter');}
     const [tasksByDate, setTasksByDate] = useState({});
     const [selectedDate, setSelectedDate] = useState('');
     const [newTask, setNewTask] = useState({
@@ -67,15 +74,13 @@ export default function Main() {
                 <div
                     key={task.id}
                     style={{
-                        backgroundColor: '#333',
-                        margin: '6px 0',
-                        padding: '10px 14px',
-                        borderRadius: '10px',
-                        display: 'flex',
-                        justifyContent: 'flex-start',
-                        alignItems: 'center',
-                        gap: '10px',
-                        color: 'white',
+                        backgroundImage: `url(${Image11})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        minHeight: '100vh',
+                        width: '100%',
+                        overflowX: 'hidden',
+                        paddingBottom: '10vh'
                     }}
                 >
                     <input
@@ -125,6 +130,22 @@ export default function Main() {
                     backgroundColor: '#00ffff',
                     animation: 'underlineMove 2s infinite linear',
                 }} />
+            </div>
+            <div style={{
+                display: 'inline-block', textAlign: 'center', position: 'relative',
+                padding: '10px 20px',
+                border: '2px solid white',
+                borderRadius: '8px',
+                marginTop: '50px',
+                animation: 'pulseBorder 2s infinite',
+                marginLeft:'120vh'
+            }}>
+                <button
+  style={{ backgroundColor: 'pink' }}
+  onClick={() => navigate('/enter')} // change '/fun-page' to your desired route
+>
+  Want more interesting?
+</button>
             </div>
 
             <div style={{ display: 'flex', justifyContent: 'center', padding: '20px', gap: '10px', flexWrap: 'wrap', alignItems: 'flex-end' }}>
@@ -243,7 +264,18 @@ export default function Main() {
                     marginBottom:'10vh'
                 }}>Current Time: {currentTime.toLocaleTimeString()}</p>
                 </div>
-              
+                <div style={{ marginTop: '20px', width: '100%', borderRadius: '12px', overflow: 'hidden' }}>
+                        <iframe
+                            style={{ borderRadius: '12px' }}
+                            src="https://open.spotify.com/embed/playlist/2FVU4Z2Vd056OWsgluNk33?utm_source=generator"
+                            width="100%"
+                            height="352"
+                            frameBorder="0"
+                            allowFullScreen
+                            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                            loading="lazy"
+                        ></iframe>
+                    </div>
 
                 </div>
             )}
