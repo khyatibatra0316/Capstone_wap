@@ -141,8 +141,8 @@ export default function Main() {
                 marginLeft:'120vh'
             }}>
                 <button
-  style={{ backgroundColor: 'pink' }}
-  onClick={() => navigate('/enter')} // change '/fun-page' to your desired route
+  style={{ backgroundColor: '#704f3a' }}
+  onClick={() => navigate('/enter')} 
 >
   Want more interesting?
 </button>
