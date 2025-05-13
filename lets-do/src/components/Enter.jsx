@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Image from './Image111.jpeg';
 import Image3 from './Image112.webp';
 import Image4 from './image16.jpeg';
+import Image5 from './Image113.jpeg';
+import Image6 from './Image03.jpeg';
 
 export default function Enter() {
   const [items, setItems] = useState([
@@ -17,6 +19,12 @@ export default function Enter() {
     { text: 'The Fall', checked: false },
     { text: 'You', checked: false },
   ]);
+  const [itemsRight2, setItemsRight2] = useState([
+    { text: 'The Royals', checked: false },
+    { text: 'Strangers Things', checked: false },
+    { text: 'The witcher', checked: false },
+    { text: 'ShadowHunters', checked: true }
+  ]);
 
   const toggleCheckLeft = (index) => {
     const updated = [...items];
@@ -28,6 +36,12 @@ export default function Enter() {
     const updated = [...itemsRight];
     updated[index].checked = !updated[index].checked;
     setItemsRight(updated);
+  };
+
+  const toggleCheckRight2 = (index) => {
+    const updated = [...itemsRight2];
+    updated[index].checked = !updated[index].checked;
+    setItemsRight2(updated);
   };
 
   const handleTextChangeLeft = (index, newText) => {
@@ -42,12 +56,22 @@ export default function Enter() {
     setItemsRight(updated);
   };
 
+  const handleTextChangeRight2 = (index, newText) => {
+    const updated = [...itemsRight2];
+    updated[index].text = newText;
+    setItemsRight2(updated);
+  };
+
   const addItemLeft = () => {
     setItems([...items, { text: 'New Show', checked: false }]);
   };
 
   const addItemRight = () => {
     setItemsRight([...itemsRight, { text: 'New Show', checked: false }]);
+  };
+
+  const addItemRight2 = () => {
+    setItemsRight2([...itemsRight2, { text: 'New Show', checked: false }]);
   };
 
   return (
@@ -69,100 +93,154 @@ export default function Enter() {
       >
         Wanna Have Ramen at My Place
       </h2>
-      <img src={Image4} alt="Netflix poster" style={{ height: '35vh' }} />
 
-      {/* LEFT COLUMN */}
-      <div style={{ marginTop: '20px' }}>
-        {items.map((item, index) => (
-          <div key={index} style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
-            <input
-              type="checkbox"
-              checked={item.checked}
-              onChange={() => toggleCheckLeft(index)}
-              style={{ width: '16px', height: '16px', cursor: 'pointer', marginRight: '8px' }}
-            />
-            <div
-              contentEditable
-              suppressContentEditableWarning
-              onBlur={(e) => handleTextChangeLeft(index, e.target.innerText)}
+      <div style={{ display: 'flex', position: 'relative' }}>
+        {/* Left Column */}
+        <div style={{ width: '33%', paddingRight: '20px' }}>
+          <img src={Image4} alt="Netflix poster" style={{ height: '35vh', width: '100%', objectFit: 'contain' }} />
+          
+          <div style={{ marginTop: '20px' }}>
+            {items.map((item, index) => (
+              <div key={index} style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
+                <input
+                  type="checkbox"
+                  checked={item.checked}
+                  onChange={() => toggleCheckLeft(index)}
+                  style={{ width: '16px', height: '16px', cursor: 'pointer', marginRight: '8px' }}
+                />
+                <div
+                  contentEditable
+                  suppressContentEditableWarning
+                  onBlur={(e) => handleTextChangeLeft(index, e.target.innerText)}
+                  style={{
+                    color: 'white',
+                    textDecoration: item.checked ? 'line-through' : 'none',
+                    padding: '3px 2px',
+                    flexGrow: 1,
+                    whiteSpace: 'pre-wrap',
+                    wordBreak: 'break-word',
+                    caretColor: 'rgba(255, 255, 255, 0.81)',
+                  }}
+                >
+                  {item.text}
+                </div>
+              </div>
+            ))}
+            <button
+              onClick={addItemLeft}
               style={{
+                marginTop: '10px',
+                padding: '5px 10px',
+                borderRadius: '4px',
+                border: 'none',
+                cursor: 'pointer',
+                background: '#e50914',
                 color: 'white',
-                textDecoration: item.checked ? 'line-through' : 'none',
-                padding: '3px 2px',
-                flexGrow: 1,
-                whiteSpace: 'pre-wrap',
-                wordBreak: 'break-word',
-                caretColor: 'rgba(255, 255, 255, 0.81)',
+                width: '10vh',
               }}
             >
-              {item.text}
-            </div>
+              + Add Show
+            </button>
           </div>
-        ))}
-        <button
-          onClick={addItemLeft}
-          style={{
-            marginTop: '10px',
-            padding: '5px 10px',
-            borderRadius: '4px',
-            border: 'none',
-            cursor: 'pointer',
-            background: '#e50914',
-            color: 'white',
-            width: '10vh',
-          }}
-        >
-          + Add Show
-        </button>
-      </div>
+        </div>
 
-      {/* RIGHT COLUMN */}
-      <div style={{ marginTop: '-60vh' }}>
-        {itemsRight.map((item, index) => (
-          <div
-            key={index}
-            style={{ display: 'flex', alignItems: 'center', marginLeft: '50vh' }}
-          >
-            <input
-              type="checkbox"
-              checked={item.checked}
-              onChange={() => toggleCheckRight(index)}
-              style={{ width: '16px', height: '16px', cursor: 'pointer', marginRight: '8px' }}
-            />
-            <div
-              contentEditable
-              suppressContentEditableWarning
-              onBlur={(e) => handleTextChangeRight(index, e.target.innerText)}
+        {/* Middle Column */}
+        <div style={{ width: '33%', padding: '0 20px' }}>
+          <div>
+            {itemsRight.map((item, index) => (
+              <div key={index} style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
+                <input
+                  type="checkbox"
+                  checked={item.checked}
+                  onChange={() => toggleCheckRight(index)}
+                  style={{ width: '16px', height: '16px', cursor: 'pointer', marginRight: '8px' }}
+                />
+                <div
+                  contentEditable
+                  suppressContentEditableWarning
+                  onBlur={(e) => handleTextChangeRight(index, e.target.innerText)}
+                  style={{
+                    color: 'white',
+                    textDecoration: item.checked ? 'line-through' : 'none',
+                    padding: '3px 2px',
+                    flexGrow: 1,
+                    whiteSpace: 'pre-wrap',
+                    wordBreak: 'break-word',
+                    caretColor: 'rgba(255, 255, 255, 0.81)',
+                  }}
+                >
+                  {item.text}
+                </div>
+              </div>
+            ))}
+            <button
+              onClick={addItemRight}
               style={{
+                marginTop: '10px',
+                padding: '5px 10px',
+                borderRadius: '4px',
+                border: 'none',
+                cursor: 'pointer',
+                background: '#e50914',
                 color: 'white',
-                textDecoration: item.checked ? 'line-through' : 'none',
-                padding: '3px 2px',
-                flexGrow: 1,
-                whiteSpace: 'pre-wrap',
-                wordBreak: 'break-word',
-                caretColor: 'rgba(255, 255, 255, 0.81)',
+                width: '10vh',
               }}
             >
-              {item.text}
-            </div>
+              + Add Show
+            </button>
           </div>
-        ))}
-        <button
-          onClick={addItemRight}
-          style={{
-            marginTop: '10px',
-            padding: '5px 10px',
-            borderRadius: '4px',
-            border: 'none',
-            cursor: 'pointer',
-            background: '#e50914',
-            color: 'white',
-            width: '10vh',
-            marginLeft: '50vh',
-          }}
-        >
-          + Add Show
-        </button>
+          
+          <img src={Image5} style={{ height: '35vh', width: '100%', objectFit: 'contain', marginTop: '5vh' }} />
+        </div>
+
+        {/* Right Column */}
+        <div style={{ width: '33%', paddingLeft: '20px' }}>
+          <img src={Image6} alt="Netflix poster" style={{ height: '35vh', width: '100%', objectFit: 'contain' }} />
+          
+          <div style={{ marginTop: '20px' }}>
+            {itemsRight2.map((item, index) => (
+              <div key={index} style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
+                <input
+                  type="checkbox"
+                  checked={item.checked}
+                  onChange={() => toggleCheckRight2(index)}
+                  style={{ width: '16px', height: '16px', cursor: 'pointer', marginRight: '8px' }}
+                />
+                <div
+                  contentEditable
+                  suppressContentEditableWarning
+                  onBlur={(e) => handleTextChangeRight2(index, e.target.innerText)}
+                  style={{
+                    color: 'white',
+                    textDecoration: item.checked ? 'line-through' : 'none',
+                    padding: '3px 2px',
+                    flexGrow: 1,
+                    whiteSpace: 'pre-wrap',
+                    wordBreak: 'break-word',
+                    caretColor: 'rgba(255, 255, 255, 0.81)',
+                  }}
+                >
+                  {item.text}
+                </div>
+              </div>
+            ))}
+            <button
+              onClick={addItemRight2}
+              style={{
+                marginTop: '10px',
+                padding: '5px 10px',
+                borderRadius: '4px',
+                border: 'none',
+                cursor: 'pointer',
+                background: '#e50914',
+                color: 'white',
+                width: '10vh',
+              }}
+            >
+              + Add Show
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );

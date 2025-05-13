@@ -144,7 +144,7 @@ export default function Main() {
   style={{ backgroundColor: '#704f3a' }}
   onClick={() => navigate('/enter')} 
 >
-  Want more interesting?
+  Want something more interesting?
 </button>
             </div>
 
