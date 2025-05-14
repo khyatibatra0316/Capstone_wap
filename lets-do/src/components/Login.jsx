@@ -4,7 +4,7 @@ import './Login.css';
 import Image7 from './Image7.jpg';
 
 import { signInWithPopup } from 'firebase/auth';
-import { auth, provider } from '../Firebase.jsx'; // make sure this path is correct
+import { auth, provider } from '../Firebase.jsx'; 
 
 const LoginPage = () => {
   const navigate = useNavigate();
