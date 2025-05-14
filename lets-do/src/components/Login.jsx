@@ -3,6 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import './Login.css';
 import Image7 from './Image7.jpg';
 
+import { signInWithPopup } from 'firebase/auth';
+import { auth, provider } from '../Firebase.jsx'; // make sure this path is correct
+
 const LoginPage = () => {
   const navigate = useNavigate();
 
@@ -10,6 +13,17 @@ const LoginPage = () => {
     e.preventDefault();
     alert('You have filled the form!');
     navigate('/home');
+  };
+
+  const handleGoogleLogin = async () => {
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+      console.log("Google User:", user);
+      navigate('/home'); // redirect after successful login
+    } catch (error) {
+      console.error("Google Sign-In Error:", error);
+    }
   };
 
   return (
@@ -34,6 +48,12 @@ const LoginPage = () => {
           </div>
 
           <button type="submit">LogIn</button>
+
+          <div style={{ marginTop: "10px" }}>
+            <button type="button" onClick={handleGoogleLogin}>
+              Sign in with Google
+            </button>
+          </div>
         </form>
       </div>
 
