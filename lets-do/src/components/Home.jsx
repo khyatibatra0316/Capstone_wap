@@ -1,67 +1,60 @@
 import { useNavigate } from 'react-router-dom';
-import './Home.css'
+import './Home.css';
+import { useEffect, useState } from 'react';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 function Home() {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+  const [hasSubmitted, setHasSubmitted] = useState(false);
+  const [user, setUser] = useState(null);
+
+  const auth = getAuth();
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser) {
+        setUser(currentUser);
+        const alreadyFilled = localStorage.getItem(`formSubmitted_${currentUser.uid}`);
+        if (alreadyFilled === 'true') {
+          setHasSubmitted(true);
+        }
+      } else {
+        navigate('/'); // redirect to login if not signed in
+      }
+    });
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
+    // mark as submitted in localStorage
+    if (user) {
+      localStorage.setItem(`formSubmitted_${user.uid}`, 'true');
+    }
+
     navigate('/main');
   };
+
+  if (hasSubmitted) {
+    return <h2 style={{ textAlign: 'center', marginTop: '100px' }}>✅ You have already submitted this form.</h2>;
+  }
+
   return (
-    <div className="home-container" >
+    <div className="home-container">
       <div className="form-content">
         <form onSubmit={handleSubmit}>
-        <div>
+          {/* your same questions here */}
           <h4>1. What is your name?</h4>
           <input type="text" placeholder="Name" required />
-        </div>
-        <div>
-          <h4>2. What's your age?</h4>
-          <input type="number" min="15" max="100" placeholder="Enter your age" required />
-        </div>
-        <div>
-          <h4>3. What is the main thing you want to achieve with this site?</h4>
-          <input placeholder="Write your answer" type="text" required/>
-        </div>
-        <div>
-          <h4>4. How do you usually organize your task?</h4>
-          <input placeholder="Write here" type="text" required/>
-        </div>
-        <div>
-          <h4>5. How are you planning to use this site?</h4>
-          <input type="text" placeholder="Write here"   required/>
-        </div>
-        <div>
-          <h4>6. Do you prefer setting daily goals, weekly goals, or flexible plans?</h4>
-          <input type="radio" id="yes" name="agree" value="yes" required />
-          <label htmlFor="yes">Yes</label>
-          <input type="radio" id="no" name="agree" value="no" required />
-          <label htmlFor="no">No</label>
-        </div>
-        <div>
-            <h4>
-            7.Would you like to integrate with your Google Calendar
-            </h4>
-            <input type="radio" id="yes" name="agree" value="yes" required />
-          <label htmlFor="yes">Yes</label>
-          <input type="radio" id="no" name="agree" value="no" required/>
-          <label htmlFor="no">No</label>
-        </div>
-        <div style={{ marginTop: '30px', width: '100%', display: 'flex', justifyContent: 'center' }}>
-          <button>Start Now</button>
-        </div>
-        <div>
-            
-        </div>
+
+          {/* ... keep the rest same ... */}
+
+          <div style={{ marginTop: '30px', width: '100%', display: 'flex', justifyContent: 'center' }}>
+            <button>Start Now</button>
+          </div>
         </form>
-        
-       
       </div>
-      
     </div>
-   
   );
 }
 
